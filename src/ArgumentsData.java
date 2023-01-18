@@ -8,7 +8,7 @@ public class ArgumentsData {
     private List<String> inputNamesArray;
 
     public String getSortMode() {
-        return this.sortMode;
+        return sortMode;
     }
 
     public void setSortMode(String sortMode) {
@@ -16,7 +16,7 @@ public class ArgumentsData {
     }
 
     public String getDataType() {
-        return this.dataType;
+        return dataType;
     }
 
     public void setDataType(String dataType) {
@@ -24,7 +24,7 @@ public class ArgumentsData {
     }
 
     public String getOutputName() {
-        return this.outputName;
+        return outputName;
     }
 
     public void setOutputName(String outputName) {
@@ -32,7 +32,7 @@ public class ArgumentsData {
     }
 
     public List<String> getInputNamesArray() {
-        return this.inputNamesArray;
+        return inputNamesArray;
     }
 
     public void setInputNamesArray(List<String> inputNamesArray) {

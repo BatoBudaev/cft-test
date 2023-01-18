@@ -5,17 +5,18 @@ public class Reader {
     private String fileName;
     private long seek;
     private long prevSeek;
+
     private boolean isReading;
     private int numberValue;
     private String stringValue;
 
     Reader(String fileName) {
         this.fileName = fileName;
-        this.isReading = true;
+        isReading = true;
     }
 
     public String getFileName() {
-        return this.fileName;
+        return fileName;
     }
 
     public void setFileName(String fileName) {
@@ -23,7 +24,7 @@ public class Reader {
     }
 
     public long getSeek() {
-        return this.seek;
+        return seek;
     }
 
     public void setSeek(long seek) {
@@ -31,7 +32,7 @@ public class Reader {
     }
 
     public long getPrevSeek() {
-        return this.prevSeek;
+        return prevSeek;
     }
 
     public void setPrevSeek(long prevSeek) {
@@ -39,7 +40,7 @@ public class Reader {
     }
 
     public int getNumberValue() {
-        return this.numberValue;
+        return numberValue;
     }
 
     public void setNumberValue(int numberValue) {
@@ -47,15 +48,15 @@ public class Reader {
     }
 
     public boolean isReading() {
-        return this.isReading;
+        return isReading;
     }
 
     public void setReading(boolean reading) {
-        this.isReading = reading;
+        isReading = reading;
     }
 
     public String getStringValue() {
-        return this.stringValue;
+        return stringValue;
     }
 
     public void setStringValue(String stringValue) {

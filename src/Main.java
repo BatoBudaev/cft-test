@@ -1,7 +1,6 @@
 import java.io.IOException;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         ArgumentsData data = new ArgumentsData();
         data.parse(args);
@@ -10,6 +9,5 @@ public class Main {
         } else if (data.getDataType().equals("-s")) {
             MergeSort.doStringMergeSort(data);
         }
-
     }
 }
