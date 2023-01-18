@@ -1,17 +1,14 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArgumentsData {
-    private String sortMode;
+    private String sortMode = "-a";
     private String dataType;
     private String outputName;
     private List<String> inputNamesArray;
 
-    ArgumentsData() {
-        sortMode = "-a";
-    }
-
     public String getSortMode() {
-        return sortMode;
+        return this.sortMode;
     }
 
     public void setSortMode(String sortMode) {
@@ -19,7 +16,7 @@ public class ArgumentsData {
     }
 
     public String getDataType() {
-        return dataType;
+        return this.dataType;
     }
 
     public void setDataType(String dataType) {
@@ -27,7 +24,7 @@ public class ArgumentsData {
     }
 
     public String getOutputName() {
-        return outputName;
+        return this.outputName;
     }
 
     public void setOutputName(String outputName) {
@@ -35,10 +32,41 @@ public class ArgumentsData {
     }
 
     public List<String> getInputNamesArray() {
-        return inputNamesArray;
+        return this.inputNamesArray;
     }
 
     public void setInputNamesArray(List<String> inputNamesArray) {
         this.inputNamesArray = inputNamesArray;
+    }
+
+    public void parse(String[] args) {
+        int argIndex = 0;
+
+        try {
+            if (args[argIndex].equals("-d") || args[argIndex].equals("-a")) {
+                setSortMode(args[argIndex++]);
+            }
+
+            if (!args[argIndex].equals("-s") && !args[argIndex].equals("-i")) {
+                throw new IllegalArgumentException("Argument must be s or i");
+            } else {
+                setDataType(args[argIndex++]);
+                setOutputName(args[argIndex++]);
+
+                List<String> inputNamesArray = new ArrayList<>();
+
+                for (; argIndex < args.length; argIndex++) {
+                    inputNamesArray.add(args[argIndex]);
+                }
+
+                if (inputNamesArray.isEmpty()) {
+                    throw new IllegalArgumentException("There must be at least one input file");
+                } else {
+                    setInputNamesArray(inputNamesArray);
+                }
+            }
+        } catch (ArrayIndexOutOfBoundsException var4) {
+            throw new ArrayIndexOutOfBoundsException("Not enough arguments");
+        }
     }
 }
