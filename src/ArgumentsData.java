@@ -65,7 +65,7 @@ public class ArgumentsData {
                     setInputNamesArray(inputNamesArray);
                 }
             }
-        } catch (ArrayIndexOutOfBoundsException var4) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             throw new ArrayIndexOutOfBoundsException("Not enough arguments");
         }
     }

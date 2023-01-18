@@ -5,7 +5,6 @@ public class Reader {
     private String fileName;
     private long seek;
     private long prevSeek;
-
     private boolean isReading;
     private int numberValue;
     private String stringValue;
@@ -64,59 +63,33 @@ public class Reader {
     }
 
     public void readIntFromFile() throws IOException, NumberFormatException {
-        try {
-            RandomAccessFile file = new RandomAccessFile(fileName, "r");
+        try (RandomAccessFile file = new RandomAccessFile(fileName, "r")) {
+            file.seek(getSeek());
+            String line;
 
-            try {
-                file.seek(getSeek());
-                String line;
-                if ((line = file.readLine()) != null) {
-                    setNumberValue(Integer.parseInt(line));
-                }
-
-                setPrevSeek(file.getFilePointer());
-            } catch (Throwable var5) {
-                try {
-                    file.close();
-                } catch (Throwable var4) {
-                    var5.addSuppressed(var4);
-                }
-
-                throw var5;
+            if ((line = file.readLine()) != null) {
+                setNumberValue(Integer.parseInt(line));
             }
 
-            file.close();
-        } catch (IOException var6) {
+            setPrevSeek(file.getFilePointer());
+        } catch (IOException e) {
             throw new IOException("File not found");
-        } catch (NumberFormatException var7) {
+        } catch (NumberFormatException e) {
             throw new NumberFormatException("The file must contain only integers");
         }
     }
 
     public void readStringFromFile() throws IOException {
-        try {
-            RandomAccessFile file = new RandomAccessFile(fileName, "r");
+        try (RandomAccessFile file = new RandomAccessFile(fileName, "r")) {
+            file.seek(getSeek());
+            String line;
 
-            try {
-                file.seek(getSeek());
-                String line;
-                if ((line = file.readLine()) != null) {
-                    setStringValue(line);
-                }
-
-                setPrevSeek(file.getFilePointer());
-            } catch (Throwable var5) {
-                try {
-                    file.close();
-                } catch (Throwable var4) {
-                    var5.addSuppressed(var4);
-                }
-
-                throw var5;
+            if ((line = file.readLine()) != null) {
+                setStringValue(line);
             }
 
-            file.close();
-        } catch (IOException var6) {
+            setPrevSeek(file.getFilePointer());
+        } catch (IOException e) {
             throw new IOException("File not found");
         }
     }
@@ -124,27 +97,15 @@ public class Reader {
     public boolean checkNextLine() throws IOException {
         boolean hasNextLine = false;
 
-        try {
-            RandomAccessFile file = new RandomAccessFile(fileName, "r");
+        try (RandomAccessFile file = new RandomAccessFile(fileName, "r")) {
+            file.seek(getSeek());
 
-            try {
-                file.seek(getSeek());
-                if (file.readLine() != null) {
-                    hasNextLine = true;
-                }
-            } catch (Throwable var6) {
-                try {
-                    file.close();
-                } catch (Throwable var5) {
-                    var6.addSuppressed(var5);
-                }
-
-                throw var6;
+            if (file.readLine() != null) {
+                hasNextLine = true;
             }
 
-            file.close();
             return hasNextLine;
-        } catch (IOException var7) {
+        } catch (IOException e) {
             throw new IOException("File not found");
         }
     }
