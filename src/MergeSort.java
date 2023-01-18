@@ -25,6 +25,7 @@ public class MergeSort {
             for (int i = 0; i < filesCount; ++i) {
                 if (readers[i].checkNextLine() && readers[i].isReading()) {
                     readers[i].readIntFromFile();
+
                     if (!hasMinOrMax) {
                         number = readers[i].getNumberValue();
                         hasMinOrMax = true;
@@ -53,6 +54,7 @@ public class MergeSort {
                 }
 
                 readers[index].setSeek(readers[index].getPrevSeek());
+
                 if (data.getSortMode().equals("-a")) {
                     if (prevNumber <= number) {
                         if (!hasPrevNumber) {
@@ -63,6 +65,7 @@ public class MergeSort {
 
                         file.writeBytes(Integer.toString(number));
                         prevNumber = number;
+
                     } else {
                         readers[index].setReading(false);
                     }
@@ -76,6 +79,7 @@ public class MergeSort {
 
                         file.writeBytes(Integer.toString(number));
                         prevNumber = number;
+
                     } else {
                         readers[index].setReading(false);
                     }
@@ -111,6 +115,7 @@ public class MergeSort {
             for (int i = 0; i < filesCount; ++i) {
                 if (readers[i].checkNextLine() && readers[i].isReading()) {
                     readers[i].readStringFromFile();
+
                     if (!hasMinOrMax) {
                         stringValue = readers[i].getStringValue();
                         hasMinOrMax = true;
@@ -139,6 +144,7 @@ public class MergeSort {
                 }
 
                 readers[index].setSeek(readers[index].getPrevSeek());
+
                 if (data.getSortMode().equals("-a")) {
                     if (prevString.compareTo(stringValue) <= 0) {
                         if (!hasPrevString) {
@@ -149,6 +155,7 @@ public class MergeSort {
 
                         file.writeBytes(stringValue);
                         prevString = stringValue;
+
                     } else {
                         readers[index].setReading(false);
                     }
@@ -162,6 +169,7 @@ public class MergeSort {
 
                         file.writeBytes(stringValue);
                         prevString = stringValue;
+
                     } else {
                         readers[index].setReading(false);
                     }
