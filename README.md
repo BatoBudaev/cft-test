@@ -11,4 +11,4 @@
 javac Main.java
 java Main -a -i out.txt 1.txt 2.txt 3.txt
 ````
-__Версия java 16.__ 
+Версия java 16.
