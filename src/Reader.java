@@ -104,9 +104,10 @@ public class Reader {
                 hasNextLine = true;
             }
 
-            return hasNextLine;
         } catch (IOException e) {
             throw new IOException("File not found");
         }
+
+        return hasNextLine;
     }
 }
